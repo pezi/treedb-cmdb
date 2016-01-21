@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Creation time: $creationDate$ -->
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="$unitName$" transaction-type="RESOURCE_LOCAL">
+        <provider>$provider$</provider>
+       	
+		    $mappings$
+        
+		<properties>
+
+			<property name="javax.persistence.jdbc.driver" value="$dbDriver$" />
+			<property name="javax.persistence.jdbc.url" value="$dbURL$" />
+			<property name="javax.persistence.jdbc.user" value="$dbUser$" />
+			<property name="javax.persistence.jdbc.password" value="$dbPwd$" />
+		   	<property name="openjpa.DynamicEnhancementAgent" value="true" />
+		   	<!-- EclipseLink  -->
+			
+	
+				
+		    <!-- OpenJPA -->   
+		    <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')"/>
+		    <property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO"/>
+		        
+			<!-- Hibernate  -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.$dialect$" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="$hbm2ddl$" />
+		
+			<!-- EclipseLink should create the database schema automatically --> 
+			<property name="eclipselink.weaving" value="static"/> 
+			<property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.$platform$" />
+			<property name="eclipselink.ddl-generation" value="$elddl$" />
+			<property name="eclipselink.ddl-generation.output-mode"	value="database" />
+			<property name="eclipselink.target-server" value="org.eclipse.persistence.platform.server.NoServerPlatform"/>
+			
+			<!-- 
+				<property name="eclipselink.logging.level" value="FINE"/> 
+		    	<property name="eclipselink.jdbc.batch-writing" value="jdbc"/> 
+		  	 -->  
+				
+		</properties>
+
+	</persistence-unit>
+</persistence>
+ 
+
+
+
+
